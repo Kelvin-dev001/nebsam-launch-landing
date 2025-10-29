@@ -7,22 +7,26 @@
     <meta name="description" content="Join Nebsam's Comprehensive Hybrid Tracker launch event on Nov 22, 2025. RSVP for the chance to win prizes, enjoy food, and discover the future of car theft prevention.">
     <meta property="og:title" content="Nebsam Hybrid Tracker Launch Event">
     <meta property="og:description" content="Ultimate car theft prevention. Raffle prizes up to 300,000. Food served. RSVP now!">
-    <meta property="og:image" content="https://nebsam.com/assets/logo.png">
+    <meta property="og:image" content="assets/logo.png">
     <meta property="og:type" content="event">
     <meta property="og:url" content="https://nebsam.com/event">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1867C0;
             --accent-blue: #298DFF;
+            --gradient-blue: linear-gradient(90deg, #1867C0 60%, #298DFF 100%);
             --white: #fff;
             --light-gray: #f5f7fa;
+            --mid-gray: #e9eef4;
             --dark: #222;
             --cta: #00C6A2;
             --danger: #E34F4F;
-            --shadow: 0 2px 8px rgba(24, 103, 192, 0.08);
-            --radius: 1rem;
-            --font-main: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-            --transition: 0.2s cubic-bezier(.4,.2,.2,1);
+            --shadow: 0 6px 24px rgba(24, 103, 192, 0.13);
+            --radius: 1.3rem;
+            --font-main: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+            --font-head: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+            --transition: 0.3s cubic-bezier(.4,.2,.2,1);
         }
         html {
             font-size: 16px;
@@ -34,143 +38,269 @@
             background: var(--light-gray);
             color: var(--dark);
         }
+        .header-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            width: 100vw;
+            height: 90px;
+            z-index: 0;
+        }
         header {
-            background: var(--primary-blue);
+            background: transparent;
             color: var(--white);
-            padding: 1.5rem 0.5rem 1rem 0.5rem;
-            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            padding: 0;
+        }
+        .header-content {
+            background: var(--gradient-blue);
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 1.3rem 1.5rem 0.7rem 1.5rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: var(--shadow);
         }
         .logo {
-            height: 48px;
-            width: 48px;
+            height: 56px;
+            width: 56px;
             margin-right: 1rem;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(24,103,192,0.08);
+            object-fit: contain;
         }
         .brand-title {
+            font-family: var(--font-head);
             font-weight: 700;
-            font-size: 1.7rem;
-            letter-spacing: 0.05em;
+            font-size: 2rem;
+            letter-spacing: 0.08em;
+        }
+        nav {
+            display: none;
+        }
+        @media (min-width: 700px) {
+            nav {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+            nav a {
+                color: var(--white);
+                font-weight: 500;
+                font-size: 1rem;
+                text-decoration: none;
+                padding: 0.4rem 0.9rem;
+                border-radius: 0.7rem;
+                transition: background var(--transition), color var(--transition);
+            }
+            nav a:hover, nav a:focus {
+                background: rgba(255,255,255,0.14);
+                color: var(--cta);
+            }
+            .nav-cta {
+                background: var(--cta);
+                color: var(--white);
+                font-weight: 700;
+            }
         }
         main {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.2rem;
             max-width: 480px;
             margin: auto;
             padding: 1rem;
+            position: relative;
+        }
+        /* Decorative SVG blob */
+        .hero-bg {
+            position: absolute;
+            left: 0;
+            top: -100px;
+            width: 100vw;
+            height: 180px;
+            z-index: 0;
+            display: block;
         }
         .hero {
-            background: linear-gradient(90deg, var(--primary-blue) 60%, var(--accent-blue) 100%);
+            position: relative;
+            background: var(--gradient-blue);
             color: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 2rem 1rem 1.5rem 1rem;
+            padding: 2.7rem 1.2rem 2.2rem 1.2rem;
             text-align: center;
-            animation: fadeIn 1s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px);}
-            to { opacity: 1; transform: translateY(0);}
+            overflow: hidden;
+            margin-top: 0.5rem;
+            animation: fadeIn 1.1s ease;
         }
         .hero h1 {
-            font-size: 2rem;
+            font-family: var(--font-head);
+            font-size: 2.3rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.04em;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.06em;
+            text-shadow: 0 2px 12px rgba(41, 141, 255, 0.20);
         }
         .hero p {
             margin: 0.5rem 0 0 0;
-            font-size: 1.15rem;
+            font-size: 1.18rem;
+            font-weight: 500;
+            opacity: 0.93;
         }
-        .event-details, .product-features, .raffle-info, .rsvp-section {
+        .hero .cta-btn {
+            margin-top: 2rem;
+            font-size: 1.18rem;
+            padding: 1rem 2.2rem;
+        }
+        .card {
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 1.5rem 1rem;
+            padding: 2rem 1.2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(32px);
+            animation: fadeSlideIn 0.9s forwards;
+            animation-delay: 0.2s;
+            margin-bottom: 0.5rem;
+        }
+        @keyframes fadeSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .section-title {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
+            font-family: var(--font-head);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.3rem;
             color: var(--primary-blue);
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
         }
         .details-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 1.2rem 0;
         }
         .details-list li {
             display: flex;
             align-items: center;
-            margin-bottom: 0.7rem;
-            font-size: 1.07rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         .details-icon {
-            font-size: 1.3em;
-            color: var(--accent-blue);
-            margin-right: 0.7rem;
+            display: inline-block;
+            margin-right: 0.9rem;
+            vertical-align: middle;
         }
         .features-list {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.2rem;
+            gap: 1.7rem;
         }
         .feature {
             display: flex;
             align-items: flex-start;
-            gap: 0.9rem;
+            gap: 1.1rem;
+            /* Card effect */
+            background: var(--mid-gray);
+            border-radius: 1.1rem;
+            padding: 1.2rem 1rem;
+            box-shadow: 0 2px 12px rgba(24,103,192,0.07);
+            transition: box-shadow var(--transition), transform var(--transition);
+        }
+        .feature:hover,
+        .feature:focus-within {
+            box-shadow: 0 8px 32px rgba(41,141,255,0.11);
+            transform: scale(1.03);
+        }
+        .feature-icon-bg {
+            background: linear-gradient(135deg, var(--cta) 60%, var(--accent-blue) 100%);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,198,162,0.09);
+            flex-shrink: 0;
         }
         .feature-icon {
-            font-size: 1.7em;
-            color: var(--cta);
-            min-width: 2em;
-        }
-        .feature-content {
-            flex: 1;
+            width: 28px;
+            height: 28px;
+            display: block;
         }
         .feature-title {
-            font-weight: 600;
-            margin-bottom: 0.1rem;
+            font-weight: 700;
+            font-size: 1.07rem;
+            margin-bottom: 0.25rem;
+            font-family: var(--font-head);
         }
         .feature-desc {
-            font-size: 0.98rem;
+            font-size: 1.01rem;
             color: #444;
+            opacity: 0.98;
         }
         .raffle-prizes {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .raffle-icon-bg {
+            background: linear-gradient(135deg, var(--danger) 60%, var(--accent-blue) 100%);
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .raffle-icon {
-            font-size: 2.2em;
-            color: var(--danger);
+            width: 32px;
+            height: 32px;
+            display: block;
         }
         .raffle-details {
-            font-size: 1.1rem;
+            font-size: 1.13rem;
+            font-weight: 500;
         }
         .food-info {
-            margin-top: 0.6rem;
+            margin-top: 0.7rem;
             display: flex;
             align-items: center;
             gap: 0.7rem;
             color: var(--cta);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .food-icon-bg {
+            background: linear-gradient(135deg, var(--cta) 60%, var(--accent-blue) 100%);
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .food-icon {
-            font-size: 1.4em;
+            width: 22px;
+            height: 22px;
+            display: block;
         }
-        .rsvp-section {
+        .rsvp-section.card {
             border: 2px solid var(--accent-blue);
-            animation: fadeIn 1.2s ease;
         }
         .rsvp-section h2 {
             margin-top: 0;
             margin-bottom: 1.1rem;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--primary-blue);
+            font-family: var(--font-head);
         }
         .rsvp-form-wrapper {
             width: 100%;
@@ -179,8 +309,8 @@
             justify-content: center;
             align-items: center;
             background: transparent;
+            margin-bottom: 1.2rem;
         }
-        /* Google Form iframe styling */
         .rsvp-form-wrapper iframe {
             width: 100%;
             min-height: 340px;
@@ -189,57 +319,49 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: box-shadow var(--transition);
-        }
-        /* Responsive tweaks */
-        @media (min-width: 480px) {
-            main {
-                max-width: 600px;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .raffle-prizes {
-                gap: 2rem;
-            }
-            .features-list {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (min-width: 768px) {
-            main {
-                max-width: 900px;
-                padding: 2rem 0;
-            }
-            .features-list {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
+            display: none;
         }
         /* Button styles */
         .cta-btn {
             background: var(--cta);
             color: var(--white);
             border: none;
-            border-radius: var(--radius);
-            font-size: 1.06rem;
-            font-weight: 600;
-            padding: 1rem 2rem;
-            min-width: 44px;
+            border-radius: 2rem;
+            font-size: 1.12rem;
+            font-family: var(--font-head);
+            font-weight: 700;
+            padding: 1rem 2.2rem;
+            min-width: 120px;
             min-height: 44px;
-            box-shadow: var(--shadow);
-            transition: background var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 12px rgba(0,198,162,0.07);
+            letter-spacing: 0.04em;
             cursor: pointer;
             margin-top: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+        }
+        .cta-btn::before {
+            content: "";
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 0; height: 0;
+            background: rgba(255,255,255,0.19);
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            transition: width 0.4s, height 0.4s;
+            z-index: 0;
+        }
+        .cta-btn:active::before {
+            width: 120px;
+            height: 120px;
+            transition: width 0s, height 0s;
         }
         .cta-btn:hover, .cta-btn:focus {
             background: var(--accent-blue);
-            box-shadow: 0 4px 16px rgba(0, 198, 162, 0.13);
+            box-shadow: 0 8px 24px rgba(41,141,255,0.14);
+            transform: scale(1.04);
             outline: none;
-        }
-        footer {
-            text-align: center;
-            padding: 1.3rem 0 1rem 0;
-            font-size: 0.97rem;
-            color: #666;
         }
         /* Loader animation for form */
         .form-loader {
@@ -260,48 +382,140 @@
             outline: 2px solid var(--accent-blue);
             outline-offset: 2px;
         }
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            font-size: 1.05rem;
+            color: #666;
+            margin-top: 2.8rem;
+            background: var(--mid-gray);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        /* Responsive tweaks */
+        @media (min-width: 480px) {
+            main {
+                max-width: 600px;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .features-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (min-width: 768px) {
+            main {
+                max-width: 880px;
+                padding: 2rem 0;
+            }
+            .features-list {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .header-content {
+                padding: 2rem 3rem 1.3rem 3rem;
+            }
+        }
+        /* Form enhancements */
+        iframe::-webkit-scrollbar {
+            width: 0.7rem;
+            background: var(--mid-gray);
+        }
+        iframe::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 1rem;
+        }
     </style>
 </head>
 <body>
+    <div class="header-bg">
+        <!-- Decorative SVG wave -->
+        <svg width="100%" height="90" viewBox="0 0 500 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C150,120 350,0 500,60 L500,0 L0,0 Z" fill="#1867C0"/></svg>
+    </div>
     <header>
-        <img src="assets/logo.png" alt="Nebsam Logo" class="logo" loading="lazy">
-        <span class="brand-title">Nebsam Digital Solutions (K) Ltd</span>
+        <div class="header-content">
+            <div style="display:flex;align-items:center;">
+                <img src="assets/logo.png" alt="Nebsam Logo" class="logo" loading="lazy">
+                <span class="brand-title">Nebsam Digital Solutions (K) Ltd</span>
+            </div>
+            <nav>
+                <a href="#details-title">Event</a>
+                <a href="#features-title">Features</a>
+                <a href="#raffle-title">Raffle</a>
+                <a href="#rsvp-title" class="nav-cta">RSVP</a>
+            </nav>
+        </div>
     </header>
-    
     <main>
+        <div class="hero-bg">
+            <!-- Decorative SVG gradient blob -->
+            <svg width="100%" height="100" viewBox="0 0 500 100" fill="none"><ellipse cx="250" cy="50" rx="250" ry="50" fill="url(#grad1)" opacity="0.5"/><defs><linearGradient id="grad1" x1="0" y1="0" x2="500" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6A2"/><stop offset="1" stop-color="#298DFF"/></linearGradient></defs></svg>
+        </div>
         <section class="hero" aria-labelledby="event-headline">
             <h1 id="event-headline">Comprehensive Hybrid Tracker Launch</h1>
-            <p>Secure your spot at the event. Discover the future of vehicle protection.</p>
+            <p>Secure your spot at the event.<br>Discover the future of vehicle protection.</p>
+            <a href="#rsvp-title" class="cta-btn" aria-label="RSVP Now">RSVP Now</a>
         </section>
         
-        <section class="event-details" aria-labelledby="details-title">
+        <section class="event-details card" aria-labelledby="details-title">
             <h2 class="section-title" id="details-title">Event Details</h2>
             <ul class="details-list">
-                <li><span class="details-icon" aria-label="Calendar">📅</span> <strong>Date:</strong> November 22, 2025</li>
-                <li><span class="details-icon" aria-label="Clock">⏰</span> <strong>Time:</strong> 12:00 PM – 5:00 PM</li>
-                <li><span class="details-icon" aria-label="Location">📍</span> <strong>Location:</strong> Nebsam HQ, Makupa Round About, Next to Mass Petrol Station</li>
+                <li>
+                    <span class="details-icon" aria-label="Calendar">
+                        <!-- Calendar SVG -->
+                        <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M16 2v4M8 2v4"/><path d="M3 10h18"/></svg>
+                    </span>
+                    <strong>Date:</strong> November 22, 2025
+                </li>
+                <li>
+                    <span class="details-icon" aria-label="Clock">
+                        <!-- Clock SVG -->
+                        <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </span>
+                    <strong>Time:</strong> 12:00 PM – 5:00 PM
+                </li>
+                <li>
+                    <span class="details-icon" aria-label="Location">
+                        <!-- Location SVG -->
+                        <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.5-6-10A6 6 0 1 1 12 21z"/><circle cx="12" cy="11" r="2"/></svg>
+                    </span>
+                    <strong>Location:</strong> Nebsam HQ, Makupa Round About, Next to Mass Petrol Station
+                </li>
             </ul>
         </section>
         
-        <section class="product-features" aria-labelledby="features-title">
+        <section class="product-features card" aria-labelledby="features-title">
             <h2 class="section-title" id="features-title">Product Highlights</h2>
             <div class="features-list">
-                <div class="feature">
-                    <span class="feature-icon" aria-label="Shield">🛡️</span>
+                <div class="feature" tabindex="0">
+                    <span class="feature-icon-bg">
+                        <!-- Shield SVG -->
+                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
                     <div class="feature-content">
                         <div class="feature-title">The End of Car Theft</div>
                         <div class="feature-desc">Ultimate GPS tracker for unmatched car theft prevention.</div>
                     </div>
                 </div>
-                <div class="feature">
-                    <span class="feature-icon" aria-label="Guarantee">💸</span>
+                <div class="feature" tabindex="0">
+                    <span class="feature-icon-bg">
+                        <!-- Money Guarantee SVG -->
+                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 11V9a2 2 0 0 0-4 0v2a2 2 0 1 1-4 0V9"/><path d="M12 15v.01"/></svg>
+                    </span>
                     <div class="feature-content">
                         <div class="feature-title">20% Compensation Guarantee</div>
                         <div class="feature-desc">Get 20% back if your car is stolen—our promise.</div>
                     </div>
                 </div>
-                <div class="feature">
-                    <span class="feature-icon" aria-label="Technology">📡</span>
+                <div class="feature" tabindex="0">
+                    <span class="feature-icon-bg">
+                        <!-- GPS/Tech SVG -->
+                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/><circle cx="12" cy="12" r="4"/></svg>
+                    </span>
                     <div class="feature-content">
                         <div class="feature-title">Hybrid Tracking Tech</div>
                         <div class="feature-desc">Harnesses multiple networks for precise, uninterrupted tracking.</div>
@@ -310,34 +524,41 @@
             </div>
         </section>
         
-        <section class="raffle-info" aria-labelledby="raffle-title">
+        <section class="raffle-info card" aria-labelledby="raffle-title">
             <h2 class="section-title" id="raffle-title">Raffle & Prizes</h2>
             <div class="raffle-prizes">
-                <span class="raffle-icon" aria-label="Gift">🎁</span>
+                <span class="raffle-icon-bg">
+                    <!-- Gift SVG -->
+                    <svg class="raffle-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M12 7V2"/><path d="M7 7C7 4.79 8.79 3 11 3s4 1.79 4 4"/><path d="M2 12h20"/></svg>
+                </span>
                 <div class="raffle-details">
                     <strong>Win prizes worth up to 300,000!</strong><br>
                     Enter the raffle by attending—don’t miss your chance!
                 </div>
             </div>
             <div class="food-info">
-                <span class="food-icon" aria-label="Food">🍽️</span>
+                <span class="food-icon-bg">
+                    <!-- Food SVG -->
+                    <svg class="food-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 16v-4M16 16v-4"/><path d="M9 9h6"/></svg>
+                </span>
                 Food will be served
             </div>
         </section>
         
-        <section class="rsvp-section" aria-labelledby="rsvp-title">
+        <section class="rsvp-section card" aria-labelledby="rsvp-title">
             <h2 id="rsvp-title">RSVP Now</h2>
             <div class="rsvp-form-wrapper" id="rsvpFormWrapper">
                 <!-- Loader while Google Form loads -->
                 <div class="form-loader" id="formLoader" aria-label="Loading RSVP form"></div>
                 <!-- Google Form Embed (update src with your Google Form link) -->
-                <iframe id="rsvpFormIframe" title="RSVP Form" src="https://docs.google.com/forms/d/e/1FAIpQLScC_40rcEO73-4HJ3IIN1XqGXUSlMtTOYkIlTIcIA197MIhAQ/viewform?embedded=true" width="640" height="1285" frameborder="0" marginheight="0" marginwidth="0">Loading</iframe>           </div>
+                <iframe id="rsvpFormIframe" title="RSVP Form" src="https://docs.google.com/forms/d/e/1FAIpQLScC_40rcEO73-4HJ3IIN1XqGXUSlMtTOYkIlTIcIA197MIhAQ/viewform?embedded=true"></iframe>
+            </div>
             <button class="cta-btn" onclick="document.getElementById('rsvpFormIframe').scrollIntoView({behavior:'smooth'})" aria-label="Jump to RSVP Form">Go to RSVP Form</button>
         </section>
     </main>
     
     <footer>
-        <div>Contact: <a href="mailto:info@nebsam.com" style="color:var(--primary-blue);text-decoration:none;" aria-label="Email Nebsam">info@nebsam.com</a></div>
+        <div>Contact: <a href="mailto:info@nebsam.com" aria-label="Email Nebsam">info@nebsam.com</a></div>
         <div>&copy; 2025 Nebsam. All rights reserved.</div>
     </footer>
     <script>
@@ -349,7 +570,6 @@
                 loader.style.display = 'none';
                 iframe.style.display = 'block';
             };
-            // Fallback: If form doesn't load in 3s, show iframe anyway
             setTimeout(function() {
                 if (loader.style.display !== 'none') {
                     loader.style.display = 'none';
