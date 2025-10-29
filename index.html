@@ -323,24 +323,24 @@
         }
         /* Button styles */
         .cta-btn {
-            background: var(--cta);
-            color: var(--white);
-            border: none;
-            border-radius: 2rem;
-            font-size: 1.12rem;
-            font-family: var(--font-head);
-            font-weight: 700;
-            padding: 1rem 2.2rem;
-            min-width: 120px;
-            min-height: 44px;
-            box-shadow: 0 4px 12px rgba(0,198,162,0.07);
-            letter-spacing: 0.04em;
-            cursor: pointer;
-            margin-top: 4rem;
-            position: relative;
-            overflow: hidden;
-            transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
-        }
+        background: var(--cta);
+        color: var(--white);
+        border: none;
+        border-radius: 2rem;
+        font-size: 1rem; /* smaller font */
+        font-family: var(--font-head);
+        font-weight: 700;
+        padding: 0.7rem 1.4rem; /* smaller padding */
+        min-width: 90px;
+        min-height: 38px;
+        box-shadow: 0 4px 12px rgba(0,198,162,0.07);
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        margin-top: 3rem; /* keeps it pushed down */
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    }
         .cta-btn::before {
             content: "";
             position: absolute;
