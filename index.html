@@ -37,6 +37,7 @@
             margin: 0;
             background: var(--light-gray);
             color: var(--dark);
+            position: relative;
         }
         .header-bg {
             position: absolute;
@@ -149,10 +150,14 @@
             font-weight: 500;
             opacity: 0.93;
         }
-        .hero .cta-btn {
-            margin-top: 2rem;
-            font-size: 1.18rem;
-            padding: 1rem 2.2rem;
+        .confetti-canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            width: 100vw;
+            height: 320px;
+            z-index: 9;
         }
         .card {
             background: var(--white);
@@ -165,6 +170,12 @@
             animation: fadeSlideIn 0.9s forwards;
             animation-delay: 0.2s;
             margin-bottom: 0.5rem;
+            transition: box-shadow 0.4s, transform 0.4s, border 0.4s;
+        }
+        .card:hover, .card:focus-within {
+            box-shadow: 0 12px 48px rgba(41,141,255,0.17), 0 2px 16px rgba(0,198,162,0.09);
+            transform: scale(1.02) translateY(-6px);
+            border: 1.5px solid var(--accent-blue);
         }
         @keyframes fadeSlideIn {
             to {
@@ -206,7 +217,6 @@
             display: flex;
             align-items: flex-start;
             gap: 1.1rem;
-            /* Card effect */
             background: var(--mid-gray);
             border-radius: 1.1rem;
             padding: 1.2rem 1rem;
@@ -323,24 +333,25 @@
         }
         /* Button styles */
         .cta-btn {
-        background: var(--cta);
-        color: var(--white);
-        border: none;
-        border-radius: 2rem;
-        font-size: 1rem; /* smaller font */
-        font-family: var(--font-head);
-        font-weight: 700;
-        padding: 0.7rem 1.4rem; /* smaller padding */
-        min-width: 90px;
-        min-height: 38px;
-        box-shadow: 0 4px 12px rgba(0,198,162,0.07);
-        letter-spacing: 0.04em;
-        cursor: pointer;
-        margin-top: 3rem; /* keeps it pushed down */
-        position: relative;
-        overflow: hidden;
-        transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
-    }
+            background: var(--cta);
+            color: var(--white);
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-family: var(--font-head);
+            font-weight: 700;
+            padding: 0.7rem 1.4rem;
+            min-width: 90px;
+            min-height: 38px;
+            box-shadow: 0 4px 12px rgba(0,198,162,0.07);
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            margin: 2.5rem auto 0 auto;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+        }
         .cta-btn::before {
             content: "";
             position: absolute;
@@ -353,8 +364,8 @@
             z-index: 0;
         }
         .cta-btn:active::before {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             transition: width 0s, height 0s;
         }
         .cta-btn:hover, .cta-btn:focus {
@@ -396,7 +407,6 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* Responsive tweaks */
         @media (min-width: 480px) {
             main {
                 max-width: 600px;
@@ -420,7 +430,6 @@
                 padding: 2rem 3rem 1.3rem 3rem;
             }
         }
-        /* Form enhancements */
         iframe::-webkit-scrollbar {
             width: 0.7rem;
             background: var(--mid-gray);
@@ -432,8 +441,8 @@
     </style>
 </head>
 <body>
+    <canvas id="confetti" class="confetti-canvas"></canvas>
     <div class="header-bg">
-        <!-- Decorative SVG wave -->
         <svg width="100%" height="90" viewBox="0 0 500 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C150,120 350,0 500,60 L500,0 L0,0 Z" fill="#1867C0"/></svg>
     </div>
     <header>
@@ -452,35 +461,32 @@
     </header>
     <main>
         <div class="hero-bg">
-            <!-- Decorative SVG gradient blob -->
             <svg width="100%" height="100" viewBox="0 0 500 100" fill="none"><ellipse cx="250" cy="50" rx="250" ry="50" fill="url(#grad1)" opacity="0.5"/><defs><linearGradient id="grad1" x1="0" y1="0" x2="500" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6A2"/><stop offset="1" stop-color="#298DFF"/></linearGradient></defs></svg>
         </div>
         <section class="hero" aria-labelledby="event-headline">
             <h1 id="event-headline">Comprehensive Hybrid Tracker Launch</h1>
             <p>Secure your spot at the event.<br>Discover the future of vehicle protection.</p>
-            <a href="#rsvp-title" class="cta-btn" aria-label="RSVP Now">RSVP Now</a>
         </section>
+        <!-- Standalone RSVP Button -->
+        <a href="#rsvp-title" class="cta-btn" aria-label="RSVP Now">RSVP Now</a>
         
         <section class="event-details card" aria-labelledby="details-title">
             <h2 class="section-title" id="details-title">Event Details</h2>
             <ul class="details-list">
                 <li>
                     <span class="details-icon" aria-label="Calendar">
-                        <!-- Calendar SVG -->
                         <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M16 2v4M8 2v4"/><path d="M3 10h18"/></svg>
                     </span>
                     <strong>Date:</strong> November 22, 2025
                 </li>
                 <li>
                     <span class="details-icon" aria-label="Clock">
-                        <!-- Clock SVG -->
                         <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </span>
                     <strong>Time:</strong> 12:00 PM – 5:00 PM
                 </li>
                 <li>
                     <span class="details-icon" aria-label="Location">
-                        <!-- Location SVG -->
                         <svg width="24" height="24" fill="none" stroke="#298DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.5-6-10A6 6 0 1 1 12 21z"/><circle cx="12" cy="11" r="2"/></svg>
                     </span>
                     <strong>Location:</strong> Nebsam HQ, Makupa Round About, Next to Mass Petrol Station
@@ -493,7 +499,6 @@
             <div class="features-list">
                 <div class="feature" tabindex="0">
                     <span class="feature-icon-bg">
-                        <!-- Shield SVG -->
                         <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </span>
                     <div class="feature-content">
@@ -503,7 +508,6 @@
                 </div>
                 <div class="feature" tabindex="0">
                     <span class="feature-icon-bg">
-                        <!-- Money Guarantee SVG -->
                         <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 11V9a2 2 0 0 0-4 0v2a2 2 0 1 1-4 0V9"/><path d="M12 15v.01"/></svg>
                     </span>
                     <div class="feature-content">
@@ -513,12 +517,11 @@
                 </div>
                 <div class="feature" tabindex="0">
                     <span class="feature-icon-bg">
-                        <!-- GPS/Tech SVG -->
                         <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/><circle cx="12" cy="12" r="4"/></svg>
                     </span>
                     <div class="feature-content">
                         <div class="feature-title">Hybrid Tracking Tech</div>
-                        <div class="feature-desc">Harnesses an ecosystem of smart sensors to ensure uninterrupted tracking.</div>
+                        <div class="feature-desc">Harnesses multiple networks for precise, uninterrupted tracking.</div>
                     </div>
                 </div>
             </div>
@@ -528,7 +531,6 @@
             <h2 class="section-title" id="raffle-title">Raffle & Prizes</h2>
             <div class="raffle-prizes">
                 <span class="raffle-icon-bg">
-                    <!-- Gift SVG -->
                     <svg class="raffle-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M12 7V2"/><path d="M7 7C7 4.79 8.79 3 11 3s4 1.79 4 4"/><path d="M2 12h20"/></svg>
                 </span>
                 <div class="raffle-details">
@@ -536,20 +538,22 @@
                     Enter the raffle by attending—don’t miss your chance!
                 </div>
             </div>
+            <div class="food-info">
+                <span class="food-icon-bg">
+                    <svg class="food-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 16v-4M16 16v-4"/><path d="M9 9h6"/></svg>
+                </span>
+                Food will be served
+            </div>
         </section>
         
         <section class="rsvp-section card" aria-labelledby="rsvp-title">
             <h2 id="rsvp-title">RSVP Now</h2>
             <div class="rsvp-form-wrapper" id="rsvpFormWrapper">
-                <!-- Loader while Google Form loads -->
                 <div class="form-loader" id="formLoader" aria-label="Loading RSVP form"></div>
-                <!-- Google Form Embed (update src with your Google Form link) -->
                 <iframe id="rsvpFormIframe" title="RSVP Form" src="https://docs.google.com/forms/d/e/1FAIpQLScC_40rcEO73-4HJ3IIN1XqGXUSlMtTOYkIlTIcIA197MIhAQ/viewform?embedded=true"></iframe>
             </div>
-            <button class="cta-btn" onclick="document.getElementById('rsvpFormIframe').scrollIntoView({behavior:'smooth'})" aria-label="Jump to RSVP Form">Go to RSVP Form</button>
         </section>
     </main>
-    
     <footer>
         <div>Contact: <a href="mailto:info@nebsam.com" aria-label="Email Nebsam">info@nebsam.com</a></div>
         <div>&copy; 2025 Nebsam. All rights reserved.</div>
@@ -569,6 +573,63 @@
                     iframe.style.display = 'block';
                 }
             }, 3000);
+
+            // Confetti effect for launch
+            function randomColor() {
+                const colors = ['#298DFF','#00C6A2','#E34F4F','#FFD600','#fff'];
+                return colors[Math.floor(Math.random()*colors.length)];
+            }
+            function launchConfetti() {
+                const canvas = document.getElementById('confetti');
+                if(!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let W = window.innerWidth, H = 320;
+                canvas.width = W; canvas.height = H;
+                let confetti = [];
+                for(let i=0;i<70;i++) {
+                    confetti.push({
+                        x: Math.random()*W,
+                        y: Math.random()*H/2,
+                        r: Math.random()*8+6,
+                        d: Math.random()*H,
+                        color: randomColor(),
+                        tilt: Math.random()*10-10
+                    });
+                }
+                function draw() {
+                    ctx.clearRect(0,0,W,H);
+                    for(let i=0;i<confetti.length;i++) {
+                        let c = confetti[i];
+                        ctx.beginPath();
+                        ctx.arc(c.x, c.y, c.r, 0, Math.PI*2, false);
+                        ctx.fillStyle = c.color;
+                        ctx.globalAlpha = 0.9;
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+                    }
+                    update();
+                }
+                function update() {
+                    for(let i=0;i<confetti.length;i++) {
+                        let c = confetti[i];
+                        c.y += Math.cos(c.d) + 2 + c.r/4;
+                        c.x += Math.sin(c.d)*2;
+                        c.d += 0.01;
+                        if(c.y > H) {
+                            c.y = -10;
+                            c.x = Math.random()*W;
+                        }
+                    }
+                }
+                setInterval(draw,20);
+                // Stop confetti after 4 seconds
+                setTimeout(function(){
+                    ctx.clearRect(0,0,W,H);
+                    canvas.width = 0; canvas.height = 0;
+                }, 4000);
+            }
+            // Run confetti only once on load
+            launchConfetti();
         });
     </script>
 </body>
