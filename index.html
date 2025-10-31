@@ -52,58 +52,7 @@
             position: relative;
             z-index: 1;
             padding: 0;
-        }
-        .header-content {
-            background: var(--gradient-blue);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.3rem 1.5rem 0.7rem 1.5rem;
-            border-radius: 0 0 var(--radius) var(--radius);
-            box-shadow: var(--shadow);
-        }
-        .logo {
-            height: 56px;
-            width: 56px;
-            margin-right: 1rem;
-            border-radius: 50%;
-            background: var(--white);
-            box-shadow: 0 2px 8px rgba(24,103,192,0.08);
-            object-fit: contain;
-        }
-        .brand-title {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 2rem;
-            letter-spacing: 0.08em;
-        }
-        nav {
-            display: none;
-        }
-        @media (min-width: 700px) {
-            nav {
-                display: flex;
-                gap: 1rem;
-                align-items: center;
-            }
-            nav a {
-                color: var(--white);
-                font-weight: 500;
-                font-size: 1rem;
-                text-decoration: none;
-                padding: 0.4rem 0.9rem;
-                border-radius: 0.7rem;
-                transition: background var(--transition), color var(--transition);
-            }
-            nav a:hover, nav a:focus {
-                background: rgba(255,255,255,0.14);
-                color: var(--cta);
-            }
-            .nav-cta {
-                background: var(--cta);
-                color: var(--white);
-                font-weight: 700;
-            }
+            display: none; /* Hidden since logo and brand are removed */
         }
         main {
             display: flex;
@@ -114,7 +63,6 @@
             padding: 1rem;
             position: relative;
         }
-        /* Decorative SVG blob */
         .hero-bg {
             position: absolute;
             left: 0;
@@ -140,24 +88,19 @@
             font-family: var(--font-head);
             font-size: 2.3rem;
             font-weight: 800;
-            margin-bottom: 0.7rem;
+            margin-bottom: 1.7rem;
             letter-spacing: 0.06em;
             text-shadow: 0 2px 12px rgba(41, 141, 255, 0.20);
         }
-        .hero p {
-            margin: 0.5rem 0 0 0;
-            font-size: 1.18rem;
-            font-weight: 500;
-            opacity: 0.93;
-        }
-        .confetti-canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-            pointer-events: none;
-            width: 100vw;
-            height: 320px;
-            z-index: 9;
+        .raffle-announcement {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--danger);
+            margin-bottom: 0.7rem;
+            margin-top: 0.7rem;
+            letter-spacing: 0.03em;
+            display: block;
         }
         .card {
             background: var(--white);
@@ -208,100 +151,6 @@
             margin-right: 0.9rem;
             vertical-align: middle;
         }
-        .features-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.7rem;
-        }
-        .feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.1rem;
-            background: var(--mid-gray);
-            border-radius: 1.1rem;
-            padding: 1.2rem 1rem;
-            box-shadow: 0 2px 12px rgba(24,103,192,0.07);
-            transition: box-shadow var(--transition), transform var(--transition);
-        }
-        .feature:hover,
-        .feature:focus-within {
-            box-shadow: 0 8px 32px rgba(41,141,255,0.11);
-            transform: scale(1.03);
-        }
-        .feature-icon-bg {
-            background: linear-gradient(135deg, var(--cta) 60%, var(--accent-blue) 100%);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,198,162,0.09);
-            flex-shrink: 0;
-        }
-        .feature-icon {
-            width: 28px;
-            height: 28px;
-            display: block;
-        }
-        .feature-title {
-            font-weight: 700;
-            font-size: 1.07rem;
-            margin-bottom: 0.25rem;
-            font-family: var(--font-head);
-        }
-        .feature-desc {
-            font-size: 1.01rem;
-            color: #444;
-            opacity: 0.98;
-        }
-        .raffle-prizes {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-        .raffle-icon-bg {
-            background: linear-gradient(135deg, var(--danger) 60%, var(--accent-blue) 100%);
-            border-radius: 50%;
-            width: 54px;
-            height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .raffle-icon {
-            width: 32px;
-            height: 32px;
-            display: block;
-        }
-        .raffle-details {
-            font-size: 1.13rem;
-            font-weight: 500;
-        }
-        .food-info {
-            margin-top: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            color: var(--cta);
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-        .food-icon-bg {
-            background: linear-gradient(135deg, var(--cta) 60%, var(--accent-blue) 100%);
-            border-radius: 50%;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .food-icon {
-            width: 22px;
-            height: 22px;
-            display: block;
-        }
         .rsvp-section.card {
             border: 2px solid var(--accent-blue);
         }
@@ -330,49 +179,6 @@
             box-shadow: var(--shadow);
             transition: box-shadow var(--transition);
             display: none;
-        }
-        /* Button styles */
-        .cta-btn {
-            background: var(--cta);
-            color: var(--white);
-            border: none;
-            border-radius: 2rem;
-            font-size: 1rem;
-            font-family: var(--font-head);
-            font-weight: 700;
-            padding: 0.7rem 1.4rem;
-            min-width: 90px;
-            min-height: 38px;
-            box-shadow: 0 4px 12px rgba(0,198,162,0.07);
-            letter-spacing: 0.04em;
-            cursor: pointer;
-            margin: 2.5rem auto 0 auto;
-            display: block;
-            position: relative;
-            overflow: hidden;
-            transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
-        }
-        .cta-btn::before {
-            content: "";
-            position: absolute;
-            left: 50%; top: 50%;
-            width: 0; height: 0;
-            background: rgba(255,255,255,0.19);
-            border-radius: 50%;
-            transform: translate(-50%,-50%);
-            transition: width 0.4s, height 0.4s;
-            z-index: 0;
-        }
-        .cta-btn:active::before {
-            width: 80px;
-            height: 80px;
-            transition: width 0s, height 0s;
-        }
-        .cta-btn:hover, .cta-btn:focus {
-            background: var(--accent-blue);
-            box-shadow: 0 8px 24px rgba(41,141,255,0.14);
-            transform: scale(1.04);
-            outline: none;
         }
         /* Loader animation for form */
         .form-loader {
@@ -414,17 +220,11 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
-            .features-list {
-                grid-template-columns: 1fr 1fr;
-            }
         }
         @media (min-width: 768px) {
             main {
                 max-width: 880px;
                 padding: 2rem 0;
-            }
-            .features-list {
-                grid-template-columns: 1fr 1fr 1fr;
             }
             .header-content {
                 padding: 2rem 3rem 1.3rem 3rem;
@@ -445,31 +245,18 @@
     <div class="header-bg">
         <svg width="100%" height="90" viewBox="0 0 500 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C150,120 350,0 500,60 L500,0 L0,0 Z" fill="#1867C0"/></svg>
     </div>
-    <header>
-        <div class="header-content">
-            <div style="display:flex;align-items:center;">
-                <img src="assets/logo.png" alt="Nebsam Logo" class="logo" loading="lazy">
-                <span class="brand-title">Nebsam Digital Solutions (K) Ltd</span>
-            </div>
-            <nav>
-                <a href="#details-title">Event</a>
-                <a href="#features-title">Features</a>
-                <a href="#raffle-title">Raffle</a>
-                <a href="#rsvp-title" class="nav-cta">RSVP</a>
-            </nav>
-        </div>
-    </header>
+    <!-- header removed -->
     <main>
         <div class="hero-bg">
             <svg width="100%" height="100" viewBox="0 0 500 100" fill="none"><ellipse cx="250" cy="50" rx="250" ry="50" fill="url(#grad1)" opacity="0.5"/><defs><linearGradient id="grad1" x1="0" y1="0" x2="500" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6A2"/><stop offset="1" stop-color="#298DFF"/></linearGradient></defs></svg>
         </div>
         <section class="hero" aria-labelledby="event-headline">
             <h1 id="event-headline">Comprehensive Hybrid Tracker Launch</h1>
-            <p>Secure your spot at the event.<br>Discover the future of vehicle protection.</p>
+            <!-- Announcement in bold and red -->
+            <span class="raffle-announcement">
+                Enter The Raffle By Attending and Win Prizes Worth Upto 300,000KES
+            </span>
         </section>
-        <!-- Standalone RSVP Button -->
-        <a href="#rsvp-title" class="cta-btn" aria-label="RSVP Now">RSVP Now</a>
-        
         <section class="event-details card" aria-labelledby="details-title">
             <h2 class="section-title" id="details-title">Event Details</h2>
             <ul class="details-list">
@@ -493,59 +280,7 @@
                 </li>
             </ul>
         </section>
-        
-        <section class="product-features card" aria-labelledby="features-title">
-            <h2 class="section-title" id="features-title">Product Highlights</h2>
-            <div class="features-list">
-                <div class="feature" tabindex="0">
-                    <span class="feature-icon-bg">
-                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </span>
-                    <div class="feature-content">
-                        <div class="feature-title">The End of Car Theft</div>
-                        <div class="feature-desc">Ultimate GPS tracker for unmatched car theft prevention.</div>
-                    </div>
-                </div>
-                <div class="feature" tabindex="0">
-                    <span class="feature-icon-bg">
-                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 11V9a2 2 0 0 0-4 0v2a2 2 0 1 1-4 0V9"/><path d="M12 15v.01"/></svg>
-                    </span>
-                    <div class="feature-content">
-                        <div class="feature-title">20% Compensation Guarantee</div>
-                        <div class="feature-desc">Get 20% back if your car is stolen—our promise.</div>
-                    </div>
-                </div>
-                <div class="feature" tabindex="0">
-                    <span class="feature-icon-bg">
-                        <svg class="feature-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/><circle cx="12" cy="12" r="4"/></svg>
-                    </span>
-                    <div class="feature-content">
-                        <div class="feature-title">Hybrid Tracking Tech</div>
-                        <div class="feature-desc">Harnesses multiple networks for precise, uninterrupted tracking.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="raffle-info card" aria-labelledby="raffle-title">
-            <h2 class="section-title" id="raffle-title">Raffle & Prizes</h2>
-            <div class="raffle-prizes">
-                <span class="raffle-icon-bg">
-                    <svg class="raffle-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M12 7V2"/><path d="M7 7C7 4.79 8.79 3 11 3s4 1.79 4 4"/><path d="M2 12h20"/></svg>
-                </span>
-                <div class="raffle-details">
-                    <strong>Win prizes worth up to 300,000!</strong><br>
-                    Enter the raffle by attending—don’t miss your chance!
-                </div>
-            </div>
-            <div class="food-info">
-                <span class="food-icon-bg">
-                    <svg class="food-icon" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 16v-4M16 16v-4"/><path d="M9 9h6"/></svg>
-                </span>
-                Food will be served
-            </div>
-        </section>
-        
+        <!-- Product Highlights and Raffle sections removed -->
         <section class="rsvp-section card" aria-labelledby="rsvp-title">
             <h2 id="rsvp-title">RSVP Now</h2>
             <div class="rsvp-form-wrapper" id="rsvpFormWrapper">
