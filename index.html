@@ -130,6 +130,7 @@
             animation: bounceArrow 1s infinite alternate cubic-bezier(.83,.02,.93,.31);
             margin-bottom: 0.1rem;
             margin-top: 0.1rem;
+            cursor: pointer;
         }
         @keyframes bounceArrow {
             0% { transform: translateY(0);}
@@ -142,6 +143,7 @@
             max-width: 480px;
             margin: 0 auto;
             z-index: 2;
+            scroll-margin-top: 8px;
         }
         .rsvp-section h2 {
             margin-top: 0.7rem;
@@ -152,16 +154,16 @@
         }
         .rsvp-form-wrapper {
             width: 100%;
-            min-height: 280px;
+            min-height: 540px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             background: transparent;
             margin-bottom: 1.2rem;
         }
         .rsvp-form-wrapper iframe {
             width: 100%;
-            min-height: 260px;
+            height: 700px;
             border: none;
             background: var(--white);
             border-radius: var(--radius);
@@ -218,6 +220,9 @@
             }
             .opening-wrapper {
                 padding-top: 0.5rem;
+            }
+            .rsvp-form-wrapper iframe {
+                height: 650px;
             }
         }
         @media (min-width: 480px) {
